@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# 📚 BookNest – Minimal Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, elegant, and fully functional client-side **Library Management System** built using **React**, **Redux Toolkit Query**, **TypeScript**, and **Tailwind CSS**.  
+It enables users to view, add, edit, delete, and borrow books—with a minimalist interface and smooth UX.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 1. Public Routes (No Authentication)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- All pages are accessible without login/signup.
+- Focused purely on core library operations.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 2. 📖 Book Management
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **View Book List**
+  - Displayed in a table format with the following columns:
+    - Title, Author, Genre, ISBN, Copies, Availability, Actions
+- **Actions**
+  - 📝 **Edit Book**: Opens form prefilled with book data.
+  - ❌ **Delete Book**: Confirmation dialog before deletion.
+  - 📚 **Borrow Book**: Opens a form to borrow copies.
+- **Add Book**
+  - Title, Author, Genre, ISBN, Description, Copies
+  - Defaults to Available if copies > 0
+  - Redirects to list view on success
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3. 📥 Borrow Book
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Fields:
+  - Quantity (number) — limited to available copies
+  - Due Date (date input)
+- Business logic:
+  - Marks book as unavailable if copies become 0
+- Redirects to **Borrow Summary** after success
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 4. 📊 Borrow Summary
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Aggregated summary from borrow data
+- Columns:
+  - Book Title, ISBN, Total Quantity Borrowed
+
+---
+
+## 🧩 Core Tech Stack
+
+- ⚛️ React
+- ⚙️ Redux Toolkit Query
+- 🔡 TypeScript
+- 🎨 Tailwind CSS + DaisyUI
+- 🌐 RESTful API (Vercel-deployed backend)
+
+---
+
+## 🧱 UI Components
+
+- ✅ **Navbar** with navigation links
+- ✅ **Books Table/Grid** with all core actions
+- ✅ **Add/Edit Book** Forms using React Hook Form
+- ✅ **Borrow Form**
+- ✅ **Borrow Summary Table**
+- ✅ **Footer**
+
+---
+
+## 💡 UX & Design
+
+- Minimalist and modern UI
+- Fully responsive layout (mobile, tablet, desktop)
+- Accessible buttons and clear actions
+- Toast notifications for feedback
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Asadulla1/library-management-client
+
 ```

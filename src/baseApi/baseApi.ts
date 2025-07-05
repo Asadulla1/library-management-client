@@ -47,7 +47,7 @@ export const booksApi = createApi({
     }),
     borrowSummary: build.query({
       query: () => `api/borrow`,
-      providesTags: ["summary"],
+      providesTags: ["summary", "books"],
     }),
   }),
 });
